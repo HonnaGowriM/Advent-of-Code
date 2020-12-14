@@ -1,0 +1,32 @@
+'''
+Reading the file expense.txt and making a dictionary of the data set
+'''
+fi = open('/Users/honna.gowri/Desktop/expense.txt', 'r')
+file = fi.readlines()
+data_set = {}
+i = 1
+for ele in file:
+    data_set[i] = int(ele.rstrip())
+    i = i + 1
+'''
+Iterating it using 3 variables po1 ,po2 and po3
+'''
+for po1 in range(1,len(data_set)+1):
+    for po2 in range(2,len(data_set)+1):
+        for po3 in range(3,len(data_set)+1):
+            if po1!=po2 and po1!=po3 and po2>po1 and po3>po2:
+                sum=data_set[po1]+data_set[po2]+data_set[po3]
+                if sum==2020:
+                    print("Found them: "+str(data_set[po1])+" and "+ str(data_set[po2]) +" and "+ str(data_set[po3]))
+                    print("Product of them is: " + str(data_set[po1]*data_set[po2]*data_set[po3]))
+                    po3=po3+1
+                else:
+                    po3=po3+1
+
+
+
+
+
+
+
+
