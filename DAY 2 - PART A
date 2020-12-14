@@ -1,0 +1,29 @@
+'''
+Reading the file expense.txt and making a dictionary of the data set
+'''
+fi = open('/Users/honna.gowri/Desktop/password.txt', 'r')
+file = fi.readlines()
+ranges_up=[]
+ranges_dw=[]
+letter=[]
+password=[]
+count=0
+valid=[]
+
+'''
+Seperating the elements into different lists 
+'''
+for ele in file:
+    ranges_up.append(ele.split()[0].split("-")[0])
+    ranges_dw.append(ele.split()[0].split("-")[1])
+    letter.append(ele.split()[1].strip(":"))
+    password.append(ele.split()[2])
+'''
+The Logic
+'''
+for mini, maxi, let, passwd in zip(ranges_up,ranges_dw,letter,password):
+    count=passwd.count(let)
+    if count>=int(mini) and count<=int(maxi):
+        valid.append(passwd)
+
+print(len(valid))
